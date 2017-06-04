@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>ng2-smart-table</title>
+  <!-- base href="https://akveo.github.io/ng2-smart-table/" -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://akveo.github.io/ng2-smart-table/favicon.ico">
+<link href="ng2-smart-table-set_files/styles.css" rel="stylesheet"><style></style><script type="text/javascript" charset="utf-8" async="" src="ng2-smart-table-set_files/2.js"></script><script type="text/javascript" charset="utf-8" async="" src="ng2-smart-table-set_files/0.js"></script><style>.with-sidebar[_ngcontent-c1]{position:relative}.with-sidebar[_ngcontent-c1]   .main-content-body[_ngcontent-c1]{padding-left:16rem}.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]{display:block;padding:0 1rem;margin-top:2rem;position:fixed;top:0;padding-top:290px;width:16rem;font-size:.875rem}.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]   .back-top[_ngcontent-c1]{display:none;margin-bottom:1rem;font-weight:700}.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]   ul[_ngcontent-c1]{padding-left:1rem;list-style:none;margin-bottom:.875rem}.with-sidebar[_ngcontent-c1]   .fixed-sidebar.scrolled[_ngcontent-c1]{position:fixed;top:0}.with-sidebar[_ngcontent-c1]   .fixed-sidebar.scrolled[_ngcontent-c1]   .back-top[_ngcontent-c1]{display:block}.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]   .examples-menu[_ngcontent-c1]   a.active[_ngcontent-c1]{font-weight:700}@media screen and (max-width:64em){.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]{display:none}}@media screen and (min-width:42em) and (max-width:64em){.with-sidebar[_ngcontent-c1]{padding:2rem 4rem}}@media screen and (max-width:42em){.with-sidebar[_ngcontent-c1]{padding:2rem 1rem}}</style><style>[_nghost-c2]     *{box-sizing:border-box;font-family:Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif}[_nghost-c2]     button, [_nghost-c2]     input, [_nghost-c2]     optgroup, [_nghost-c2]     select, [_nghost-c2]     textarea{color:inherit;font:inherit;margin:0}[_nghost-c2]     table{font-size:16px;line-height:1.5;color:#606c71;border-collapse:collapse;border-spacing:0;display:table;width:100%;max-width:100%;overflow:auto;word-break:normal;word-break:keep-all}[_nghost-c2]     table tr th{font-weight:700}[_nghost-c2]     table tr section{font-size:.75rem;font-weight:700}[_nghost-c2]     table tr td, [_nghost-c2]     table tr th{font-size:.875rem;margin:0;padding:.5rem 1rem;border:1px solid #e9ebec}[_nghost-c2]     a{color:#1e6bb8;text-decoration:none}[_nghost-c2]     a:hover{text-decoration:underline}</style><style>[_nghost-c3]   .ng2-smart-row.selected[_ngcontent-c3]{background:rgba(0,0,0,.05)}[_nghost-c3]   .ng2-smart-row[_ngcontent-c3]   .ng2-smart-actions.ng2-smart-action-multiple-select[_ngcontent-c3]{text-align:center}</style><style>.ng2-smart-pagination[_ngcontent-c4]{display:inline-block;font-size:.875rem;padding:0}.ng2-smart-pagination[_ngcontent-c4]   .sr-only[_ngcontent-c4]{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.ng2-smart-pagination[_ngcontent-c4]   .ng2-smart-page-item[_ngcontent-c4]{display:inline}</style><style>a.sort.asc[_ngcontent-c6], a.sort.desc[_ngcontent-c6]{font-weight:700}a.sort.asc[_ngcontent-c6]:after, a.sort.desc[_ngcontent-c6]:after{content:"";display:inline-block;width:0;height:0;border-bottom:4px solid rgba(0,0,0,.3);border-top:4px solid transparent;border-left:4px solid transparent;border-right:4px solid transparent;margin-bottom:2px}a.sort.desc[_ngcontent-c6]:after{-webkit-transform:rotate(-180deg);transform:rotate(-180deg);margin-bottom:-2px}</style><style>[_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     input, [_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     select{width:100%;line-height:normal;padding:.375rem .75rem;font-weight:400}[_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     input[type=search]{box-sizing:inherit}[_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     .completer-dropdown-holder, [_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     a{font-weight:400}</style><style>.completer-dropdown[_ngcontent-c7] {
+        border-color: #ececec;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        width: 250px;
+        padding: 6px;
+        cursor: pointer;
+        z-index: 9999;
+        position: absolute;
+        margin-top: -6px;
+        background-color: #ffffff;
+    }
+
+    .completer-row[_ngcontent-c7] {
+        padding: 5px;
+        color: #000000;
+        margin-bottom: 4px;
+        clear: both;
+        display: inline-block;
+        width: 103%;
+    }
+
+    .completer-selected-row[_ngcontent-c7] {
+        background-color: lightblue;
+        color: #ffffff;
+    }
+
+    .completer-description[_ngcontent-c7] {
+        font-size: 14px;
+    }
+
+    .completer-image-default[_ngcontent-c7] {
+        width: 16px; 
+        height: 16px;
+        background-image: url("demo/res/img/default.png");
+    }
+
+    .completer-image-holder[_ngcontent-c7] {
+        float: left;
+        width: 10%;
+    }
+    .completer-item-text-image[_ngcontent-c7] {
+        float: right;
+        width: 90%;
+    }</style><script type="text/javascript" charset="utf-8" async="" src="ng2-smart-table-set_files/3.js"></script><style>.nested-obj[_ngcontent-c8]{color:#bdbdbd}</style></head>
+<body>
+  <app-root _nghost-c0="" ng-version="4.0.0">
+    <router-outlet _ngcontent-c0=""></router-outlet><demo _nghost-c8="" ng-version="4.0.0"><header-component _ngcontent-c8="" tagline="Documentation"><section class="page-header internal">
+  <h1 class="project-name"><a routerlink="/" href="#/">ng2-smart-table</a></h1>
+  <h2 class="project-tagline">Documentation</h2>
+
+  <a class="btn" routerlink="/demo" routerlinkactive="active" href="#/demo">Quick Start</a>
+  <a class="btn" routerlink="/examples" routerlinkactive="active" href="#/examples">Examples</a>
+  <a class="btn active" routerlink="/documentation" routerlinkactive="active" href="#/documentation">Documentation</a>
+  <a class="btn" href="https://github.com/akveo/ng2-smart-table" target="_blank">View on GitHub</a>
+</section></header-component>
+
+<section _ngcontent-c8="" class="main-content">
+  <h2 _ngcontent-c8=""><a _ngcontent-c8="" aria-hidden="true" class="anchor" href="#documentation" id="documentation"><span _ngcontent-c8="" aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h2>
+
+  <h3 _ngcontent-c8=""><a _ngcontent-c8="" aria-hidden="true" class="anchor" href="#configuration" id="inputs"><span _ngcontent-c8="" aria-hidden="true" class="octicon octicon-link"></span></a>Component Inputs</h3>
+
+  <table _ngcontent-c8="">
+    <tbody _ngcontent-c8=""><tr _ngcontent-c8="">
+      <th _ngcontent-c8="">Input</th>
+      <th _ngcontent-c8="">Type</th>
+      <th _ngcontent-c8="">Description</th>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">[settings]</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">Table component configuration object, properties described below</td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">[source]</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Array</span>|<span _ngcontent-c8="" class="highlight">DataSource</span></td>
+      <td _ngcontent-c8="">Table data, either an array or DataSource object (LocalDataSource currently supported)</td>
+    </tr>
+  </tbody></table>
+
+  <h3 _ngcontent-c8=""><a _ngcontent-c8="" aria-hidden="true" class="anchor" href="#configuration" id="configuration"><span _ngcontent-c8="" aria-hidden="true" class="octicon octicon-link"></span></a>Table Configuration</h3>
+
+  <table _ngcontent-c8="">
+    <tbody _ngcontent-c8=""><tr _ngcontent-c8="">
+      <th _ngcontent-c8="">Property</th>
+      <th _ngcontent-c8="">Type</th>
+      <th _ngcontent-c8="">Default</th>
+      <th _ngcontent-c8="">Description</th>
+    </tr>
+    <tr _ngcontent-c8="" class="section">
+      <td _ngcontent-c8="">Required Table Settings</td>
+      <td _ngcontent-c8=""></td>
+      <td _ngcontent-c8=""></td>
+      <td _ngcontent-c8=""></td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">columns</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Table column settings, by default an empty object.<br _ngcontent-c8="">
+        Example format:<br _ngcontent-c8="">
+        <code _ngcontent-c8="">
+          columns: {
+            <b _ngcontent-c8="">columnKey</b>: {
+              title: 'Some Title'
+            }
+          }
+        </code>
+        <br _ngcontent-c8="">
+        Please note, <b _ngcontent-c8="">columnKey</b> must be the same as a key in data array objects.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="" class="section">
+      <td _ngcontent-c8="">Column Settings</td>
+      <td _ngcontent-c8=""></td>
+      <td _ngcontent-c8=""></td>
+      <td _ngcontent-c8="">
+        List of a column's settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">title</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Column title
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">class</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Column class
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">width</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Column width, example: <span _ngcontent-c8="" class="highlight">'20px'</span>, <span _ngcontent-c8="" class="highlight">'20%'</span>
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">editable</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">true</td>
+      <td _ngcontent-c8="">
+        Whether this column is editable or not
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">type</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">'text'</span>|<span _ngcontent-c8="" class="highlight">'html'</span>|<span _ngcontent-c8="" class="highlight">'custom'</span></td>
+      <td _ngcontent-c8="">'text'</td>
+      <td _ngcontent-c8="">
+        If type is <span _ngcontent-c8="" class="highlight">text</span> then cell value will be inserted as text.<br _ngcontent-c8="">
+        If type is <span _ngcontent-c8="" class="highlight">html</span> then cell value will be inserted as html.<br _ngcontent-c8="">
+        If type is <span _ngcontent-c8="" class="highlight">custom</span> the <code _ngcontent-c8="">renderComponent</code> property must be defined.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">renderComponent</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">any</span></td>
+      <td _ngcontent-c8="">null</td>
+      <td _ngcontent-c8="">
+        Custom component that will be responsible for rendering the cell content while in view mode.<br _ngcontent-c8="">
+        Type must be <span _ngcontent-c8="" class="highlight">custom</span> in order for this to work.<br _ngcontent-c8="">
+        You can see an <a _ngcontent-c8="" class="source" href="https://github.com/akveo/ng2-smart-table/blob/master/src/app/pages/examples/custom-edit-view/advanced-example-custom-editor.component.ts">example here</a>
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">editor</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Editor attributes settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor</span>.type</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">'text' | 'textarea' | 'completer' | 'list' | 'checkbox'</span></td>
+      <td _ngcontent-c8="">'text'</td>
+      <td _ngcontent-c8="">
+        Editor used when new row is added or edited
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor</span>.config</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Editor configuration settings. Mandatory only for editor types <span _ngcontent-c8="" class="highlight">completer</span>, <span _ngcontent-c8="" class="highlight">list</span>
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor.config</span>.true</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Only on <span _ngcontent-c8="" class="highlight">checkbox</span> type.<br _ngcontent-c8="">
+        Defines the value to assign when the checkbox is checked. This parameter is optional, if omitted, <code _ngcontent-c8="">true</code> will be used.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor.config</span>.false</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Only on <span _ngcontent-c8="" class="highlight">checkbox</span> type.<br _ngcontent-c8="">
+        Defines the value to assign when the checkbox is not checked. This parameter is optional, if omitted, <code _ngcontent-c8="">false</code> will be used.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor.config</span>.list</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Array</span></td>
+      <td _ngcontent-c8="">[ ]</td>
+      <td _ngcontent-c8="">
+        Only on <span _ngcontent-c8="" class="highlight">list</span> type. Example format:<br _ngcontent-c8="">
+        <code _ngcontent-c8="">{ value: 'Element Value', title: 'Element Title' }</code><br _ngcontent-c8="">
+        Html is supported if column type is <span _ngcontent-c8="" class="highlight">'html'</span>
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor.config</span>.completer</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Only on <span _ngcontent-c8="" class="highlight">completer</span> type. Example format:<br _ngcontent-c8="">
+        Completer configuration settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor.config.completer</span>.data</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Array</span></td>
+      <td _ngcontent-c8="">[ ]</td>
+      <td _ngcontent-c8="">
+        Autocomplete list data source.<br _ngcontent-c8="">
+        Example format:<br _ngcontent-c8="">
+        <code _ngcontent-c8="">{ id: 10, name: 'Nick', email: 'rey@karina.biz' }</code>
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor.config.completer</span>.searchFields</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Comma separated list of fields to search on. Fields may contain 
+dots for nested attributes; if empty or null all data will be returned
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor.config.completer</span>.titleField</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+       Name of the field to use as title for the list item
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="nested-obj">editor.config.completer</span>.descriptionField</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Name of the field to use as description for the list item
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">filter</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Column filter attributes settings. This object accepts the same properties as the <code _ngcontent-c8="">editor</code> object.<br _ngcontent-c8="">
+        The available types are: <code _ngcontent-c8="">checkbox</code>, <code _ngcontent-c8="">select</code>, <code _ngcontent-c8="">completer</code>.<br _ngcontent-c8="">
+        The <code _ngcontent-c8="">checkbox</code> type accepts one more optional property compared to the <code _ngcontent-c8="">editor</code> version: <span _ngcontent-c8="" class="highlight">resetText: string</span>.
+        It defines the text of the button to reset the checkbox selection.<br _ngcontent-c8="">
+        <a _ngcontent-c8="" class="source" href="https://github.com/akveo/ng2-smart-table/blob/master/src/app/pages/examples/filter/advanced-example-filters.component.ts">Click here to see an example</a> on how to configure it.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">valuePrepareFunction</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Function</span></td>
+      <td _ngcontent-c8="">
+        n/a
+      </td>
+      <td _ngcontent-c8="">
+        Function run against a value before it gets inserted into a cell.
+        You can use it to modify how a value is displayed in the cell.
+        <br _ngcontent-c8="">
+        This function will be invoked with 2 parameters: cell, row
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">sort</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">true</td>
+      <td _ngcontent-c8="">
+        Column sort settings, enable/disable.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">sortDirection</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">'asc'|'desc'</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Sort table by this column with this direction by default.<br _ngcontent-c8="">
+        Applied only when <span _ngcontent-c8="" class="highlight">sort</span> = true.
+        Note: multiple sort option is not supported yet, so sortDirection can be applied to only one column per table.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">compareFunction</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Function</span></td>
+      <td _ngcontent-c8="">
+        n/a
+      </td>
+      <td _ngcontent-c8="">
+        Function run against the values to sort the table
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">filter</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">true</td>
+      <td _ngcontent-c8="">
+        Column filter settings, enable/disable
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">filterFunction</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Function</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Function run against the column value when filtering is happening
+      </td>
+    </tr>
+    <tr _ngcontent-c8="" class="section">
+      <td _ngcontent-c8="">Other Table Settings</td>
+      <td _ngcontent-c8=""></td>
+      <td _ngcontent-c8=""></td>
+      <td _ngcontent-c8=""></td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">mode</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">'external'</span>|<span _ngcontent-c8="" class="highlight">'inline'</span></td>
+      <td _ngcontent-c8="">'inline'</td>
+      <td _ngcontent-c8="">
+        Determines how to react on action links (Add, Edit, Delete).<br _ngcontent-c8="">
+        <span _ngcontent-c8="" class="highlight">'external'</span> - just trigger the events (LINK HERE).<br _ngcontent-c8="">
+        <span _ngcontent-c8="" class="highlight">'inline'</span> - process internally, show forms/inputs/etc<br _ngcontent-c8="">
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">hideHeader</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">'boolean'</span></td>
+      <td _ngcontent-c8="">false</td>
+      <td _ngcontent-c8="">
+        Set to true to not display the table header (which includes table column titles)
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">hideSubHeader</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">'boolean'</span></td>
+      <td _ngcontent-c8="">false</td>
+      <td _ngcontent-c8="">
+        Set to true to not display the table sub-header (which includes 
+filters and global table actions (currently - Add action))
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">noDataMessage</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'No data found'</td>
+      <td _ngcontent-c8="">
+        Message shown when there is no data in the table
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">attr</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Table attributes settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">attr.id</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Table element id
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">attr.class</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Table element class
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">actions</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Settings for the table actions
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">actions.columnTitle</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'Actions'</td>
+      <td _ngcontent-c8="">
+        Actions column title
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">actions.add</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">true</td>
+      <td _ngcontent-c8="">
+        Show/not show Add button
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">actions.edit</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">true</td>
+      <td _ngcontent-c8="">
+        Show/not show Edit button
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">actions.delete</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">true</td>
+      <td _ngcontent-c8="">
+        Show/not show Delete button
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">actions.position</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">'left'</span>|<span _ngcontent-c8="" class="highlight">'right'</span></td>
+      <td _ngcontent-c8="">'left'</td>
+      <td _ngcontent-c8="">
+        Choose actions column position
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">filter</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Settings for the table filter
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">filter.inputClass</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Filter input class
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">edit</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Edit action settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">edit.inputClass</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        Editing form input class
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">edit.editButtonContent</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'Edit'</td>
+      <td _ngcontent-c8="">
+        Edit row button content/title
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">edit.saveButtonContent</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'Update'</td>
+      <td _ngcontent-c8="">
+        Update button content/title
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">edit.cancelButtonContent</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'Cancel'</td>
+      <td _ngcontent-c8="">
+        Cancel button content/title
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">edit.confirmSave</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">false</td>
+      <td _ngcontent-c8="">
+        Enable/disable <span _ngcontent-c8="" class="highlight">(confirmEdit)</span> event. If enabled data will be edited only if confirm.resolve() called.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">add</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Add action settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">add.inputClass</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">''</td>
+      <td _ngcontent-c8="">
+        New row input class
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">add.addButtonContent</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'Add New'</td>
+      <td _ngcontent-c8="">
+        Add New button content/title
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">add.createButtonContent</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'Create'</td>
+      <td _ngcontent-c8="">
+        Create button content/title
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">add.cancelButtonContent</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'Cancel'</td>
+      <td _ngcontent-c8="">
+        Cancel button content/title
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">add.confirmCreate</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">false</td>
+      <td _ngcontent-c8="">
+        Enable/disable <span _ngcontent-c8="" class="highlight">(confirmCreate)</span> event. If enabled data will be added only if confirm.resolve() called.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">delete</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Delete action settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">delete.deleteButtonContent</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">string</span></td>
+      <td _ngcontent-c8="">'Delete'</td>
+      <td _ngcontent-c8="">
+        Delete row input class
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">delete.confirmDelete</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">false</td>
+      <td _ngcontent-c8="">
+        Enable/disable <span _ngcontent-c8="" class="highlight">(confirmDelete)</span> event. If enabled data will be deleted only if confirm.resolve() called.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">pager</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">Object</span></td>
+      <td _ngcontent-c8="">n/a</td>
+      <td _ngcontent-c8="">
+        Pager settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">pager.display</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">boolean</span></td>
+      <td _ngcontent-c8="">true</td>
+      <td _ngcontent-c8="">
+        Whether to display the pager or not
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">pager.perPage</td>
+      <td _ngcontent-c8=""><span _ngcontent-c8="" class="highlight">number</span></td>
+      <td _ngcontent-c8="">10</td>
+      <td _ngcontent-c8="">
+        Rows per page
+      </td>
+    </tr>
+  </tbody></table>
+
+  <h3 _ngcontent-c8=""><a _ngcontent-c8="" aria-hidden="true" class="anchor" href="#events" id="events"><span _ngcontent-c8="" aria-hidden="true" class="octicon octicon-link"></span></a>Component Outputs/Events</h3>
+
+  <table _ngcontent-c8="">
+    <tbody _ngcontent-c8=""><tr _ngcontent-c8="">
+      <th _ngcontent-c8="">Event</th>
+      <th _ngcontent-c8="">Arguments</th>
+      <th _ngcontent-c8="">Description</th>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(rowSelect)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">data: <span _ngcontent-c8="" class="highlight">Object</span> - selected row data object</li>
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered once a row is selected (either clicked or selected 
+automatically (after page is changed, after some row is deleted, etc)).
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(userRowSelect)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">data: <span _ngcontent-c8="" class="highlight">Object</span> - selected row data object</li>
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered <strong _ngcontent-c8="">only</strong> on a user click event.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(mouseover)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">data: <span _ngcontent-c8="" class="highlight">Object</span> - highlighted row data object</li>
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered <strong _ngcontent-c8="">only</strong> on a user mouseover event.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(create)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered once a Create button clicked. Triggered only if table <strong _ngcontent-c8="">mode = external</strong>.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(createConfirm)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">newData: <span _ngcontent-c8="" class="highlight">Object</span> - data entered in a new row</li>
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+          <li _ngcontent-c8="">confirm: <span _ngcontent-c8="" class="highlight">Deferred</span> - Deferred object with resolve(newData: Object) and reject() methods.</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered once a Create button clicked. Triggered only if table <strong _ngcontent-c8="">confirmCreate = true and mode = inline</strong>.
+        Allows you to confirm changes before they are applied to the table data source.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(edit)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">data: <span _ngcontent-c8="" class="highlight">Object</span> - row data object</li>
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered once an Edit button clicked on a row. Triggered only if table <strong _ngcontent-c8="">mode = external</strong>.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(editConfirm)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">data: <span _ngcontent-c8="" class="highlight">Object</span> - original row data</li>
+          <li _ngcontent-c8="">newData: <span _ngcontent-c8="" class="highlight">Object</span> - edited data</li>
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+          <li _ngcontent-c8="">confirm: <span _ngcontent-c8="" class="highlight">Deferred</span> - Deferred object with resolve(newData: Object) and reject() methods.</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered once a Save button clicked. Triggered only if table <strong _ngcontent-c8="">confirmSave = true and mode = inline</strong>.
+        Allows you to confirm changes before they are applied to the table data source.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(delete)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">data: <span _ngcontent-c8="" class="highlight">Object</span> - row data object</li>
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered once a Delete button clicked on a row. Triggered only if table <strong _ngcontent-c8="">mode = external</strong>.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">(deleteConfirm)</td>
+      <td _ngcontent-c8="">
+        event: <span _ngcontent-c8="" class="highlight">Object</span>, consist of:
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">data: <span _ngcontent-c8="" class="highlight">Object</span> - data object to delete</li>
+          <li _ngcontent-c8="">source: <span _ngcontent-c8="" class="highlight">DataSource</span> - table data source</li>
+          <li _ngcontent-c8="">confirm: <span _ngcontent-c8="" class="highlight">Deferred</span> - Deferred object with resolve() and reject() methods.</li>
+        </ul>
+      </td>
+      <td _ngcontent-c8="">
+        Triggered once a Delete button clicked. Triggered only if table <strong _ngcontent-c8="">confirmDelete = true and mode = inline</strong>.
+        Allows you to confirm changes before they are applied to the table data source.
+      </td>
+    </tr>
+  </tbody></table>
+
+  <h3 _ngcontent-c8=""><a _ngcontent-c8="" aria-hidden="true" class="anchor" href="#source-method" id="source-method"><span _ngcontent-c8="" aria-hidden="true" class="octicon octicon-link"></span></a>Data Source Methods</h3>
+
+  <table _ngcontent-c8="">
+    <tbody _ngcontent-c8=""><tr _ngcontent-c8="">
+      <th _ngcontent-c8="">Method</th>
+      <th _ngcontent-c8="">Arguments</th>
+      <th _ngcontent-c8="">Description</th>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">load</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">data: <span _ngcontent-c8="" class="highlight">Array</span> - data to load into the table</li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Reload table with new data. For example if some data has received from the server.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">prepend</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">element: <span _ngcontent-c8="" class="highlight">Object</span> - object to add</li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Add a new element to the beginning of the table.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">append</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">element: <span _ngcontent-c8="" class="highlight">Object</span> - object to add</li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Add a new element to the end of the table. This also will switch current page to the last one.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">add</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">element: <span _ngcontent-c8="" class="highlight">Object</span> - object to add</li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Add a new element to the table.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">remove</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">element: <span _ngcontent-c8="" class="highlight">Object</span> - object to remove</li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Remove the element from the table.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">update</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">element: <span _ngcontent-c8="" class="highlight">Object</span> - object to update</li>
+          <li _ngcontent-c8="">values: <span _ngcontent-c8="" class="highlight">Object</span> - object with new values</li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Update the element in the table.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">find</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">element: <span _ngcontent-c8="" class="highlight">Object</span> - object to find</li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Find the element in the table.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">getElements</td>
+      <td _ngcontent-c8="">
+        n/a
+      </td><td _ngcontent-c8="">
+        Get elements for current sort, filter and page.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">getFilteredAndSorted</td>
+      <td _ngcontent-c8="">
+        n/a
+        </td><td _ngcontent-c8="">
+          Get sorted, filtered and not paginated elements.
+        </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">getAll</td>
+      <td _ngcontent-c8="">
+        n/a
+      </td><td _ngcontent-c8="">
+        Get all data source elements.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">setSort</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">
+            conf: <span _ngcontent-c8="" class="highlight">Array</span> - array of sort setting objects, object format is:
+            <ul _ngcontent-c8="">
+              <li _ngcontent-c8="">field - <span _ngcontent-c8="" class="highlight">string</span> - columnKey</li>
+              <li _ngcontent-c8="">direction - <span _ngcontent-c8="" class="string">string|null</span> - 'asc'|'desc'|null - sort direction</li>
+              <li _ngcontent-c8="">compare - <span _ngcontent-c8="" class="string">Function|null</span> - custom compare function</li>
+            </ul>
+          </li>
+          <li _ngcontent-c8="">
+            doEmit: <span _ngcontent-c8="" class="highlight">boolean</span> - emit event (to refresh the table) or not, default = true
+          </li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Set table sorts, example: <br _ngcontent-c8="">
+        <code _ngcontent-c8="">this.source.setSort([{ field: 'id', direction: 'asc' }]);</code>
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">setFilter</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">
+            conf: <span _ngcontent-c8="" class="highlight">Array</span> - array of filter setting objects, object format is:
+            <ul _ngcontent-c8="">
+              <li _ngcontent-c8="">field - <span _ngcontent-c8="" class="highlight">string</span> - columnKey</li>
+              <li _ngcontent-c8="">search - <span _ngcontent-c8="" class="string">string</span> - search query</li>
+              <li _ngcontent-c8="">filter - <span _ngcontent-c8="" class="string">Function|null</span> - custom filter function</li>
+            </ul>
+          </li>
+          <li _ngcontent-c8="">
+            andOperator: <span _ngcontent-c8="" class="highlight">boolean</span> - how to process multiple filters (as AND or as OR), default = true (AND)
+          </li>
+          <li _ngcontent-c8="">
+            doEmit: <span _ngcontent-c8="" class="highlight">boolean</span> - emit event (to refresh the table) or not, default = true
+          </li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Set table filters, example: <br _ngcontent-c8="">
+        <code _ngcontent-c8="">this.source.setFilter([{ field: 'id', search: 'foobar' }, { field: 'name', search: 'foobar' }]);</code>
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">addFilter</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">
+            conf: <span _ngcontent-c8="" class="highlight">Object</span> - one filter object, format is:
+            <ul _ngcontent-c8="">
+              <li _ngcontent-c8="">field - <span _ngcontent-c8="" class="highlight">string</span> - columnKey</li>
+              <li _ngcontent-c8="">search - <span _ngcontent-c8="" class="string">string</span> - search query</li>
+              <li _ngcontent-c8="">filter - <span _ngcontent-c8="" class="string">Function|null</span> - custom filter function</li>
+            </ul>
+          </li>
+          <li _ngcontent-c8="">
+            andOperator: <span _ngcontent-c8="" class="highlight">boolean</span> - how to process multiple filters (as AND or as OR), default = true (AND)
+          </li>
+          <li _ngcontent-c8="">
+            doEmit: <span _ngcontent-c8="" class="highlight">boolean</span> - emit event (to refresh the table) or not, default = true
+          </li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Set table filter for one column, example: <br _ngcontent-c8="">
+        <code _ngcontent-c8="">this.source.addFilter({ field: 'id', search: 'foobar' });</code>
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">setPaging</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">
+            page: <span _ngcontent-c8="" class="highlight">number</span> - page number
+          </li>
+          <li _ngcontent-c8="">
+            perPage: <span _ngcontent-c8="" class="highlight">number</span> - about per page
+          </li>
+          <li _ngcontent-c8="">
+            doEmit: <span _ngcontent-c8="" class="highlight">boolean</span> - emit event (to refresh the table) or not, default = true
+          </li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Set table pagination settings
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">setPage</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">
+            page: <span _ngcontent-c8="" class="highlight">number</span> - page number
+          </li>
+          <li _ngcontent-c8="">
+            doEmit: <span _ngcontent-c8="" class="highlight">boolean</span> - emit event (to refresh the table) or not, default = true
+          </li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Set table page
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">reset</td>
+      <td _ngcontent-c8="">
+        <ul _ngcontent-c8="">
+          <li _ngcontent-c8="">silent: <span _ngcontent-c8="" class="highlight">boolean</span> - if true - you have to additionally call `refresh` to reflect the changes</li>
+        </ul>
+      </td><td _ngcontent-c8="">
+        Set data source to first page with empty filter and empty sort.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">refresh</td>
+      <td _ngcontent-c8="">
+        n/a
+      </td><td _ngcontent-c8="">
+        Refresh data in the data source. In most cases you won't need this method.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">count</td>
+      <td _ngcontent-c8="">
+        n/a
+      </td><td _ngcontent-c8="">
+        Return count of element in the data source.
+      </td>
+    </tr>
+    <tr _ngcontent-c8="">
+      <td _ngcontent-c8="">empty</td>
+      <td _ngcontent-c8="">
+        n/a
+      </td><td _ngcontent-c8="">
+        Empty the data source.
+      </td>
+    </tr>
+  </tbody></table>
+
+</section>
+</demo>
+  </app-root>
+<script type="text/javascript" src="ng2-smart-table-set_files/inline.js"></script><script type="text/javascript" src="ng2-smart-table-set_files/polyfills.js"></script><script type="text/javascript" src="ng2-smart-table-set_files/vendor.js"></script><script type="text/javascript" src="ng2-smart-table-set_files/main.js"></script>
+
+</body></html>
