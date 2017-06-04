@@ -1,0 +1,2003 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>ng2-smart-table</title>
+  <!-- base href="https://akveo.github.io/ng2-smart-table/" -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://akveo.github.io/ng2-smart-table/favicon.ico">
+<link href="ng2-smart-table-3_files/styles.css" rel="stylesheet"><style></style><script type="text/javascript" charset="utf-8" async="" src="ng2-smart-table-3_files/2.js"></script><script type="text/javascript" charset="utf-8" async="" src="ng2-smart-table-3_files/0.js"></script><style>.with-sidebar[_ngcontent-c1]{position:relative}.with-sidebar[_ngcontent-c1]   .main-content-body[_ngcontent-c1]{padding-left:16rem}.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]{display:block;padding:0 1rem;margin-top:2rem;position:fixed;top:0;padding-top:290px;width:16rem;font-size:.875rem}.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]   .back-top[_ngcontent-c1]{display:none;margin-bottom:1rem;font-weight:700}.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]   ul[_ngcontent-c1]{padding-left:1rem;list-style:none;margin-bottom:.875rem}.with-sidebar[_ngcontent-c1]   .fixed-sidebar.scrolled[_ngcontent-c1]{position:fixed;top:0}.with-sidebar[_ngcontent-c1]   .fixed-sidebar.scrolled[_ngcontent-c1]   .back-top[_ngcontent-c1]{display:block}.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]   .examples-menu[_ngcontent-c1]   a.active[_ngcontent-c1]{font-weight:700}@media screen and (max-width:64em){.with-sidebar[_ngcontent-c1]   .fixed-sidebar[_ngcontent-c1]{display:none}}@media screen and (min-width:42em) and (max-width:64em){.with-sidebar[_ngcontent-c1]{padding:2rem 4rem}}@media screen and (max-width:42em){.with-sidebar[_ngcontent-c1]{padding:2rem 1rem}}</style><style>[_nghost-c2]     *{box-sizing:border-box;font-family:Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif}[_nghost-c2]     button, [_nghost-c2]     input, [_nghost-c2]     optgroup, [_nghost-c2]     select, [_nghost-c2]     textarea{color:inherit;font:inherit;margin:0}[_nghost-c2]     table{font-size:16px;line-height:1.5;color:#606c71;border-collapse:collapse;border-spacing:0;display:table;width:100%;max-width:100%;overflow:auto;word-break:normal;word-break:keep-all}[_nghost-c2]     table tr th{font-weight:700}[_nghost-c2]     table tr section{font-size:.75rem;font-weight:700}[_nghost-c2]     table tr td, [_nghost-c2]     table tr th{font-size:.875rem;margin:0;padding:.5rem 1rem;border:1px solid #e9ebec}[_nghost-c2]     a{color:#1e6bb8;text-decoration:none}[_nghost-c2]     a:hover{text-decoration:underline}</style><style>[_nghost-c3]   .ng2-smart-row.selected[_ngcontent-c3]{background:rgba(0,0,0,.05)}[_nghost-c3]   .ng2-smart-row[_ngcontent-c3]   .ng2-smart-actions.ng2-smart-action-multiple-select[_ngcontent-c3]{text-align:center}</style><style>.ng2-smart-pagination[_ngcontent-c4]{display:inline-block;font-size:.875rem;padding:0}.ng2-smart-pagination[_ngcontent-c4]   .sr-only[_ngcontent-c4]{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.ng2-smart-pagination[_ngcontent-c4]   .ng2-smart-page-item[_ngcontent-c4]{display:inline}</style><style>a.sort.asc[_ngcontent-c6], a.sort.desc[_ngcontent-c6]{font-weight:700}a.sort.asc[_ngcontent-c6]:after, a.sort.desc[_ngcontent-c6]:after{content:"";display:inline-block;width:0;height:0;border-bottom:4px solid rgba(0,0,0,.3);border-top:4px solid transparent;border-left:4px solid transparent;border-right:4px solid transparent;margin-bottom:2px}a.sort.desc[_ngcontent-c6]:after{-webkit-transform:rotate(-180deg);transform:rotate(-180deg);margin-bottom:-2px}</style><style>[_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     input, [_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     select{width:100%;line-height:normal;padding:.375rem .75rem;font-weight:400}[_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     input[type=search]{box-sizing:inherit}[_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     .completer-dropdown-holder, [_nghost-c5]   .ng2-smart-filter[_ngcontent-c5]     a{font-weight:400}</style><style>.completer-dropdown[_ngcontent-c7] {
+        border-color: #ececec;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 2px;
+        width: 250px;
+        padding: 6px;
+        cursor: pointer;
+        z-index: 9999;
+        position: absolute;
+        margin-top: -6px;
+        background-color: #ffffff;
+    }
+
+    .completer-row[_ngcontent-c7] {
+        padding: 5px;
+        color: #000000;
+        margin-bottom: 4px;
+        clear: both;
+        display: inline-block;
+        width: 103%;
+    }
+
+    .completer-selected-row[_ngcontent-c7] {
+        background-color: lightblue;
+        color: #ffffff;
+    }
+
+    .completer-description[_ngcontent-c7] {
+        font-size: 14px;
+    }
+
+    .completer-image-default[_ngcontent-c7] {
+        width: 16px; 
+        height: 16px;
+        background-image: url("demo/res/img/default.png");
+    }
+
+    .completer-image-holder[_ngcontent-c7] {
+        float: left;
+        width: 10%;
+    }
+    .completer-item-text-image[_ngcontent-c7] {
+        float: right;
+        width: 90%;
+    }</style></head>
+<body>
+  <app-root _nghost-c0="" ng-version="4.0.0">
+    <router-outlet _ngcontent-c0=""></router-outlet><examples _nghost-c1="" ng-version="4.0.0"><header-component _ngcontent-c1="" tagline="Examples"><section class="page-header internal">
+  <h1 class="project-name"><a routerlink="/" href="#/">ng2-smart-table</a></h1>
+  <h2 class="project-tagline">Examples</h2>
+
+  <a class="btn" routerlink="/demo" routerlinkactive="active" href="#/demo">Quick Start</a>
+  <a class="btn active" routerlink="/examples" routerlinkactive="active" href="#/examples">Examples</a>
+  <a class="btn" routerlink="/documentation" routerlinkactive="active" href="#/documentation">Documentation</a>
+  <a class="btn" href="https://github.com/akveo/ng2-smart-table" target="_blank">View on GitHub</a>
+</section></header-component>
+<div _ngcontent-c1="" class="main-content with-sidebar">
+  <nav _ngcontent-c1="" class="fixed-sidebar">
+    <h4 _ngcontent-c1="">Examples</h4>
+    <ul _ngcontent-c1="" class="examples-menu">
+      <li _ngcontent-c1=""><a _ngcontent-c1="" routerlink="./using-filters" routerlinkactive="active" href="#/examples/using-filters" class="">Standalone &amp; Advanced filters</a></li>
+      <li _ngcontent-c1=""><a _ngcontent-c1="" routerlink="./populate-from-server" routerlinkactive="active" href="#/examples/populate-from-server" class="">Loading data from server</a></li>
+      <li _ngcontent-c1=""><a _ngcontent-c1="" routerlink="./custom-editors-viewers" routerlinkactive="active" href="#/examples/custom-editors-viewers" class="active">Custom editors and viewers</a></li>
+      <li _ngcontent-c1=""><a _ngcontent-c1="" routerlink="./various" routerlinkactive="active" href="#/examples/various">Various</a></li>
+    </ul>
+  </nav>
+  <div _ngcontent-c1="" class="main-content-body">
+    <router-outlet _ngcontent-c1=""></router-outlet><custom-edit-view-examples ng-version="4.0.0"><h2>Customized edit and view cells examples</h2>
+<h3><a aria-hidden="true" class="anchor" href="#types" id="types"><span aria-hidden="true" class="octicon octicon-link"></span></a>Select, Completer and Textarea column types</h3>
+<p>
+  An example on how to use select, completer, textarea column types:
+</p>
+<div class="with-source">
+  <a class="source" href="https://github.com/akveo/ng2-smart-table/blob/master/src/app/pages/examples/custom-edit-view/advanced-example-types.component.ts" target="_blank">Demo Source</a>
+  <advanced-example-types>
+    <ng2-smart-table _nghost-c2=""><table _ngcontent-c2="" id="">
+
+  <!----><thead _ngcontent-c2="" ng2-st-thead=""><!----><tr class="ng2-smart-titles" ng2-st-thead-titles-row="">
+    <!---->
+    <!----><th ng2-st-actions-title="" class="ng2-smart-actions">
+    <div class="ng2-smart-title">Actions</div>
+  </th>
+    <!----><th class="ng2-smart-th id">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      ID
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th name">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Full Name
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th username">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      User Name
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th email">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Email
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th comments">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Comments
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th passed">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Passed
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th>
+    <!---->
+  </tr>
+
+<!----><tr class="ng2-smart-filters" ng2-st-thead-filters-row="">
+    <!---->
+    <!----><th ng2-st-add-button="" class="ng2-smart-actions-title ng2-smart-actions-title-add">
+    <!----><a class="ng2-smart-action ng2-smart-action-add-add" href="#">Add New</a>
+  </th>
+    <!----><th class="ng2-smart-th id">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="ID" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th name">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Full Name" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th username">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="User Name" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th email">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Email" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th comments">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Comments" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th passed">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Passed" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th>
+    <!---->
+  </tr>
+
+<!----></thead>
+
+  <tbody _ngcontent-c2="" ng2-st-tbody="" _nghost-c3=""><!----><tr _ngcontent-c3="" class="ng2-smart-row selected">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>1</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Leanne Graham</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Bret</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Sincere@april.biz</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Lorem ipsum dolor sit amet, ex dolorem officiis convenire usu.</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Yes</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>2</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Ervin Howell</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Antonette</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Shanna@melissa.tv</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Vix iudico graecis in? Malis eirmod consectetuer duo ut?
+                Mel an aeterno vivendum accusata, qui ne amet stet definitiones.</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Yes</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>3</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Clementine Bauch</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Samantha</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Nathan@yesenia.net</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Mollis latine intellegebat ei usu, veri exerci intellegebat vel cu. Eu nec ferri copiosae.</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>No</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>4</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Patricia Lebsack</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Karianne</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Julianne.OConner@kory.org</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Eu sea graece corrumpit, et tation nominavi philosophia eam, veri posidonium ex mea?</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Yes</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>5</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Chelsey Dietrich</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Kamren</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Lucio_Hettinger@annie.ca</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Quo viris appellantur an, pro id eirmod oblique iuvaret,
+                timeam omittam comprehensam ad eam? Eos id dico gubergren,
+                cum dicant qualisque ea, id vim ferri moderatius?</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>No</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>6</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Mrs. Dennis Schulist</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Leopoldo_Corkery</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Karley_Dach@jasper.info</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Audire appareat sententiae qui no. Sed no rebum vitae quidam.</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>No</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>7</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Kurtis Weissnat</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Elwyn.Skiles</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Telly.Hoeger@billy.biz</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Mel dicat sanctus accusata ut! Eu sit choro vituperata,
+                qui cu quod gubergren elaboraret, mollis vulputate ex cum!</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Yes</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>8</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Nicholas Runolfsdottir V</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Maxime_Nienow</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Sherwood@rosamond.me</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Cu usu nostrum quaerendum, no eripuit sanctus democritum cum.</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>No</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>9</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Glenna Reichert</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Delphine</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Chaim_McDermott@dana.io</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>In iisque oporteat vix, amet volutpat constituto sit ut. Habeo suavitate vis ei.</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>No</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>10</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Clementina DuBuque</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div>Moriah.Stanton</div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Rey.Padberg@karina.biz</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Lorem ipsum dolor sit amet, causae fuisset ea has, adhuc tantas interesset per id.
+                 Ne vocibus persequeris has, meis lucilius ex mea, illum labores contentiones pro in?</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Yes</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr>
+
+  <!---->
+</tbody>
+
+</table>
+
+<!----><ng2-smart-table-pager _ngcontent-c2="" _nghost-c4="">
+    <!----><nav _ngcontent-c4="" class="ng2-smart-pagination-nav">
+      <ul _ngcontent-c4="" class="ng2-smart-pagination pagination">
+        <li _ngcontent-c4="" class="ng2-smart-page-item page-item disabled">
+          <a _ngcontent-c4="" aria-label="First" class="ng2-smart-page-link page-link" href="#">
+            <span _ngcontent-c4="" aria-hidden="true">«</span>
+            <span _ngcontent-c4="" class="sr-only">First</span>
+          </a>
+        </li>
+        <!----><li _ngcontent-c4="" class="ng2-smart-page-item page-item active">
+          <!----><span _ngcontent-c4="" class="ng2-smart-page-link page-link">1 <span _ngcontent-c4="" class="sr-only">(current)</span></span>
+          <!---->
+        </li><li _ngcontent-c4="" class="ng2-smart-page-item page-item">
+          <!---->
+          <!----><a _ngcontent-c4="" class="ng2-smart-page-link page-link" href="#">2</a>
+        </li>
+
+        <li _ngcontent-c4="" class="ng2-smart-page-item page-item">
+          <a _ngcontent-c4="" aria-label="Last" class="ng2-smart-page-link page-link" href="#">
+            <span _ngcontent-c4="" aria-hidden="true">»</span>
+            <span _ngcontent-c4="" class="sr-only">Last</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </ng2-smart-table-pager>
+</ng2-smart-table>
+  </advanced-example-types>
+</div>
+<h3><a aria-hidden="true" class="anchor" href="#custom-editor-renderer" id="custom-editor-renderer"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom editor/renderer column type</h3>
+<p>An example on how to use a custom cell editor and/or custom cell renderer:</p>
+<div class="with-source">
+  <a class="source" href="https://github.com/akveo/ng2-smart-table/blob/master/src/app/pages/examples/custom-edit-view/advanced-example-custom-editor.component.ts" target="_blank">Demo Source</a>
+  <advanced-example-custom-editor>
+    <ng2-smart-table _nghost-c2=""><table _ngcontent-c2="" id="">
+
+  <!----><thead _ngcontent-c2="" ng2-st-thead=""><!----><tr class="ng2-smart-titles" ng2-st-thead-titles-row="">
+    <!---->
+    <!----><th ng2-st-actions-title="" class="ng2-smart-actions">
+    <div class="ng2-smart-title">Actions</div>
+  </th>
+    <!----><th class="ng2-smart-th id">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      ID
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th name">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Full Name
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th username">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      User Name
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th link">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Link
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th>
+    <!---->
+  </tr>
+
+<!----><tr class="ng2-smart-filters" ng2-st-thead-filters-row="">
+    <!---->
+    <!----><th ng2-st-add-button="" class="ng2-smart-actions-title ng2-smart-actions-title-add">
+    <!----><a class="ng2-smart-action ng2-smart-action-add-add" href="#">Add New</a>
+  </th>
+    <!----><th class="ng2-smart-th id">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="ID" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th name">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Full Name" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th username">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="User Name" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th link">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Link" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th>
+    <!---->
+  </tr>
+
+<!----></thead>
+
+  <tbody _ngcontent-c2="" ng2-st-tbody="" _nghost-c3=""><!----><tr _ngcontent-c3="" class="ng2-smart-row selected">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>1</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><ng-component ng-version="4.0.0">
+    LEANNE GRAHAM
+  </ng-component>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Bret</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div><a href="http://www.google.com/">Google</a></div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>2</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><ng-component ng-version="4.0.0">
+    ERVIN HOWELL
+  </ng-component>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Antonette</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div><a href="https://github.com/akveo/ng2-admin">Ng2 Admin</a></div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>3</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><ng-component ng-version="4.0.0">
+    CLEMENTINE BAUCH
+  </ng-component>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Samantha</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div><a href="https://github.com/akveo/ng2-smart-table">Ng2 smart table</a></div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>4</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><ng-component ng-version="4.0.0">
+    PATRICIA LEBSACK
+  </ng-component>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Karianne</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!----><div><a href="https://github.com/akveo/blur-admin">Blur Admin</a></div>
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr>
+
+  <!---->
+</tbody>
+
+</table>
+
+<!----><ng2-smart-table-pager _ngcontent-c2="" _nghost-c4="">
+    <!---->
+  </ng2-smart-table-pager>
+</ng2-smart-table>
+  </advanced-example-custom-editor>
+</div>
+<p>When implementing a custom editor or renderer remember to add it to the <code>entryComponents</code> and to the <code>declarations</code> part of your module</p>
+<pre>  <code class="typescript hljs" highlight=""><span class="hljs-meta">@NgModule</span>({
+  imports: [
+    <span class="hljs-comment">// ...</span>
+  ],
+  entryComponents: [CustomEditorComponent, CustomRenderComponent],
+  declarations: [
+    <span class="hljs-comment">// ...</span>
+    CustomEditorComponent,
+    CustomRenderComponent,
+  ],
+})</code>
+</pre>
+<p>
+  <b>For the custom cell editor:</b><br>
+  To inherit the methods needed to interact with the table you can either extend the component with the <code>DefaultEditor</code> class or implement the <code>Editor</code> interface and reproduce the same methods on your component.<br>
+  <b>For the custom cell renderer:</b><br>
+  In this example the custom component is applying a <code>.toUpperCase()</code> to one of the columns. You can implement the ViewCell interface to make sure you are setting up your component correctly.
+</p>
+
+<h3>
+  <a aria-hidden="true" class="anchor" href="#buttonview" id="buttonview">
+    <span aria-hidden="true" class="octicon octicon-link"></span>
+  </a>Button View
+</h3>
+<p>An example on how to use custom button view:</p>
+<div class="with-source">
+  <a class="source" href="https://github.com/akveo/ng2-smart-table/blob/master/src/app/pages/examples/custom-edit-view/basic-example-button-view.component.ts" target="_blank">Demo Source</a>
+  <basic-example-button-view>
+    <ng2-smart-table _nghost-c2=""><table _ngcontent-c2="" id="">
+
+  <!----><thead _ngcontent-c2="" ng2-st-thead=""><!----><tr class="ng2-smart-titles" ng2-st-thead-titles-row="">
+    <!---->
+    <!----><th ng2-st-actions-title="" class="ng2-smart-actions">
+    <div class="ng2-smart-title">Actions</div>
+  </th>
+    <!----><th class="ng2-smart-th id">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      ID
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th name">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Full Name
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th username">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      User Name
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th email">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Email
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th><th class="ng2-smart-th button">
+      <ng2-st-column-title>
+    <div class="ng2-smart-title">
+      <ng2-smart-table-title _nghost-c6="">
+    <!----><a _ngcontent-c6="" class="ng2-smart-sort-link sort" href="#">
+      Button
+    </a>
+    <!---->
+  </ng2-smart-table-title>
+    </div>
+  </ng2-st-column-title>
+    </th>
+    <!---->
+  </tr>
+
+<!----><tr class="ng2-smart-filters" ng2-st-thead-filters-row="">
+    <!---->
+    <!----><th ng2-st-add-button="" class="ng2-smart-actions-title ng2-smart-actions-title-add">
+    <!----><a class="ng2-smart-action ng2-smart-action-add-add" href="#">Add New</a>
+  </th>
+    <!----><th class="ng2-smart-th id">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="ID" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th name">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Full Name" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th username">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="User Name" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th email">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Email" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th><th class="ng2-smart-th button">
+      <ng2-smart-table-filter _nghost-c5="">
+    <!----><div _ngcontent-c5="" class="ng2-smart-filter">
+      <!---->
+      <!---->
+      <!---->
+      <!----><input-filter _ngcontent-c5="">
+    <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Button" type="text">
+  </input-filter>
+    </div>
+  </ng2-smart-table-filter>
+    </th>
+    <!---->
+  </tr>
+
+<!----></thead>
+
+  <tbody _ngcontent-c2="" ng2-st-tbody="" _nghost-c3=""><!----><tr _ngcontent-c3="" class="ng2-smart-row selected">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>1</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Leanne Graham</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Bret</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Sincere@april.biz</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><button-view ng-version="4.0.0">
+    <button>BUTTON #1</button>
+  </button-view>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>2</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Ervin Howell</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Antonette</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Shanna@melissa.tv</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><button-view ng-version="4.0.0">
+    <button>BUTTON #2</button>
+  </button-view>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>3</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Clementine Bauch</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Samantha</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Nathan@yesenia.net</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><button-view ng-version="4.0.0">
+    <button>BUTTON #3</button>
+  </button-view>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>4</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Patricia Lebsack</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Karianne</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Julianne.OConner@kory.org</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><button-view ng-version="4.0.0">
+    <button>BUTTON #4</button>
+  </button-view>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr><tr _ngcontent-c3="" class="ng2-smart-row">
+  <!---->
+  <!----><td _ngcontent-c3="" class="ng2-smart-actions">
+    <ng2-st-tbody-edit-delete _ngcontent-c3="">
+    <!----><a class="ng2-smart-action ng2-smart-action-edit-edit" href="#">Edit</a>
+    <!----><a class="ng2-smart-action ng2-smart-action-delete-delete" href="#">Delete</a>
+  </ng2-st-tbody-edit-delete>
+  </td>
+   <!---->
+  <!----><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>5</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Chelsey Dietrich</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Kamren</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!---->
+        <!---->
+        <!----><div>Lucio_Hettinger@annie.ca</div>
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td><td _ngcontent-c3="">
+    <ng2-smart-table-cell _ngcontent-c3="">
+    <!----><table-cell-view-mode>
+    <div>
+        <!----><custom-view-component>
+    <!----><button-view ng-version="4.0.0">
+    <button>BUTTON #5</button>
+  </button-view>
+  </custom-view-component>
+        <!---->
+        <!---->
+    </div>
+    </table-cell-view-mode>
+    <!---->
+  </ng2-smart-table-cell>
+  </td>
+  
+  <!---->
+  
+  <!---->
+  </tr>
+
+  <!---->
+</tbody>
+
+</table>
+
+<!----><ng2-smart-table-pager _ngcontent-c2="" _nghost-c4="">
+    <!---->
+  </ng2-smart-table-pager>
+</ng2-smart-table>
+  </basic-example-button-view>
+</div>
+</custom-edit-view-examples>
+  </div>
+</div>
+</examples>
+  </app-root>
+<script type="text/javascript" src="ng2-smart-table-3_files/inline.js"></script><script type="text/javascript" src="ng2-smart-table-3_files/polyfills.js"></script><script type="text/javascript" src="ng2-smart-table-3_files/vendor.js"></script><script type="text/javascript" src="ng2-smart-table-3_files/main.js"></script>
+
+</body></html>
