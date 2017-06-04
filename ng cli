@@ -1,0 +1,21 @@
+Angular CLI 1.0.0-beta.32.3 於 2017-02-17 釋出！
+.
+升級的步驟必須 "完整執行" 以下 3 行命令：
+npm uninstall -g angular-cli @angular/cli
+npm cache clean
+npm install -g @angular/cli@latest
+.
+其他重點摘要如下：
+.
+* 雖然 Angular CLI 快 RC0 了，現在正在趕進度導致有一堆 "BREAKING CHANGES" 的更新，還有一些奇怪的問題 (都可以解決)，請遵循上述升級步驟更新。以下最後一點的 yarn 問題也要看一下。
+.
+* Bug Fixes: ng help 修好了! 現在改用 ng build --help 來看文件
+* Bug Fixes: ng g module --routing 不會再產生無聊的 component 了。
+* 移除 ng init 與 ng update 命令。
+* ng build 可以加上 --stats-json 參數，產生的 stats.json 可以用 webpack-visualizer 來分析。
+* 設定檔改名: 從 angular-cli.json 改成 .angular-cli.json 檔案。
+* 靜態檔案的 assets 設定可以移出 src/ 目錄外了。
+* component 的 css 現在可以用 @import 匯入樣式了。
+* 支援 ng eject 命令可退出 Angular CLI 環境。
+* 現在 ng new 的預設 commit 現在會讀取 GIT_AUTHOR_NAME 與 GIT_AUTHOR_EMAIL 環境變數，不然就會用 "Angular CLI" <angular-cli@angular.io> 當 commit 的人。
+* 這一版用 ng new 完之後，在 Windows 會連 ng build/serve 都不能跑，那是因為用 yarn 安裝的關係，如果你已經設定預設用 yarn 安裝的話，可以執行 ng set --global packageManager=npm 改回原本設定。
