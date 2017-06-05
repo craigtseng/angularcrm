@@ -1,8 +1,9 @@
 
 
 ## npm 升級指令
+```bash
 npm install npm@latest -g
-
+```
 ## ng cli 升級指令 (務必按照步驟)
 ## 1.
 ```bash
