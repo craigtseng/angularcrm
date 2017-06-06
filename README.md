@@ -17,3 +17,4 @@ npm cache clean
 ```bash
 npm install -g @angular/cli@latest
 ```
+https://www.primefaces.org/primeng/#/datatable/crud
