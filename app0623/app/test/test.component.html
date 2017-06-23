@@ -1,0 +1,19 @@
+﻿<h3>Cars1</h3>
+<p-dataTable [value]="cars1">
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"></p-column>
+</p-dataTable>
+
+<h3>Cars2</h3>
+<p-dataTable [value]="cars2">
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"></p-column>
+</p-dataTable>
+
+<h3>Cars1 + Cars2</h3>
+<p-dataTable [value]=a>
+    <p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header"></p-column>
+</p-dataTable>
+
+<button (click)="getCar1()" >Car1</button>
+<button (click)="getCar2()" >Car2</button>
+<button (click)="join()" >Join</button>
+<button (click)="clear()">Clear</button>

@@ -1,0 +1,19 @@
+export interface programauthorization {
+    id?;
+    name?;
+    userid?;
+    password?;
+    disabled?;
+    activeStartDate?;
+    activeEndDate?;
+    email?;
+    groupid?;
+    groupname?;
+    isDefault?;
+    roleid?;
+    rname?;
+    dname?;
+    issucessful?;
+    loginip?;
+    logindate?;
+}
