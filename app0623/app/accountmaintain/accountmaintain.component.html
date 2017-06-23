@@ -1,0 +1,185 @@
+﻿<p-dataTable #p [value]="cars" [responsive]="true" selectionMode="single" [(selection)]="selectedCar"  (onRowSelect)="onRowSelect($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+     <p-header>
+        <div style="text-align:left">
+            <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+        </div>
+    </p-header>
+	<p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+	
+    <p-footer>
+		<div class="ui-helper-clearfix" style="width:100%">
+			<button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+			<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="float:left"></button>
+		</div>
+	</p-footer>
+	
+</p-dataTable>
+
+
+<h1>Account</h1>
+
+
+<p-dialog header="Account Details" [(visible)]="DetailDialog" [responsive]="false" showEffect="fade" [modal]="true" [closable]="false" >
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+        <div class="ui-grid-row" *ngIf="!newCar">
+            <div class="ui-grid-col-2"><label for="id">id</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id" disabled = "true" [(ngModel)]="car.id" disabled="true"/></div>
+        </div>
+		<div class="ui-grid-row" *ngIf="newCar">
+            <div class="ui-grid-col-2"><label for="id">id</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id"  [(ngModel)]="car.id" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-2"><label for="name">name</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="car.name"/></div>
+        </div>
+         <div class="ui-grid-row">
+            <div class="ui-grid-col-2"><label for="password">password</label></div>
+            <div class="ui-grid-col-8"><input type="password"  id="password" [(ngModel)]="car.password"/></div>
+        </div>
+         <div class="ui-grid-row">
+            <div class="ui-grid-col-2"><label for="userid">userid</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="userid" [(ngModel)]="car.userid"/></div>
+        </div>
+         <div class="ui-grid-row" *ngIf="!newCar">
+            <div class="ui-grid-col-2"><label for="disabled">disabled</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="disabled" [(ngModel)]="car.disabled" disabled="true"/></div>
+        </div>
+		 <div class="ui-grid-row" *ngIf="newCar">
+            <div class="ui-grid-col-2"><label for="disabled">disabled</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="disabled" [(ngModel)]="car.disabled"/></div>
+        </div>
+         <div class="ui-grid-row">
+            <div class="ui-grid-col-2"><label for="activeStartDate">activeStartDate</label></div>
+            <div class="ui-grid-col-8">
+				<p-calendar id="activeStartDate" [(ngModel)]="car.activeStartDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1990:2099" [showIcon]="true" dateFormat="yy/mm/dd"></p-calendar> 
+			</div>
+        </div>
+         <div class="ui-grid-row">
+            <div class="ui-grid-col-2"><label for="activeEndDate">activeEndDate</label></div>
+            <div class="ui-grid-col-8">
+				<p-calendar id="activeEndDate" [(ngModel)]="car.activeEndDate" [monthNavigator]="true" [yearNavigator]="true" yearRange="1990:2099" [showIcon]="true" dateFormat="yy/mm/dd"></p-calendar> 
+			</div>
+        </div>
+         <div class="ui-grid-row">
+            <div class="ui-grid-col-2"><label for="email">email</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="email" [(ngModel)]="car.email"/></div>
+        </div>
+	</div>
+        
+
+<span *ngIf="detailShow">
+	<p-tabView >
+		<p-tabPanel header="AccountGroup">
+		<p-dataTable #p [value]="atGroups" [responsive]="true" selectionMode="single" [(selection)]="selectedCar1"  (onRowSelect)="onRowSelect1($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+				<p-header>
+					<div style="text-align:left">
+						<p-multiSelect [options]="columnOptions1" [(ngModel)]="cols1"></p-multiSelect>
+					</div>
+				</p-header>
+					<p-column *ngFor="let col of cols1" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+				<p-footer>
+				   <div class="ui-helper-clearfix" >
+						<button type="button" pButton icon="fa-plus"  (click)="AtGroupAdd()" label="Add" style="width:10% ;display:inline;float:left"></button>
+						<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					</div>
+				</p-footer>
+			</p-dataTable>
+		</p-tabPanel>
+		
+		<p-tabPanel header="AccountRole">
+		<p-dataTable #p [value]="atRoles" [responsive]="true" selectionMode="single" [(selection)]="selectedCar2"  (onRowSelect)="onRowSelect2($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+				<p-header>
+					<div style="text-align:left">
+						<p-multiSelect [options]="columnOptions2" [(ngModel)]="cols2"></p-multiSelect>
+					</div>
+				</p-header>
+					<p-column *ngFor="let col of cols2" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+				<p-footer>
+				   <div class="ui-helper-clearfix">
+						<button type="button" pButton icon="fa-plus"  (click)="AtRoleAdd()" label="Add" style="width:10% ;display:inline;float:left"></button>
+						<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					</div>
+				</p-footer>
+			</p-dataTable>
+		</p-tabPanel>
+			
+        <p-tabPanel header="AccountLog">
+			<p-dataTable #p [value]="atLogs" [responsive]="true" selectionMode="single"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+				<p-header>
+				<div style="text-align:left">	
+					<p-multiSelect [options]="columnOptions3" [(ngModel)]="cols3"></p-multiSelect>
+				</div>
+				</p-header>
+					<p-column *ngFor="let col of cols3" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+				<p-footer>
+				<div style="ui-helper-clearfix" style="width:10%">	
+					<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" ></button>
+				</div>	
+				</p-footer>
+			</p-dataTable>
+		</p-tabPanel>
+            
+    </p-tabView>
+  </span>  
+        
+
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="Cancel()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Group Detail" [(visible)]="GroupDialog" showEffect="fade"  [closable]="false">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="At_Group">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="groupId">groupId</label></div>
+            <div class="ui-grid-col-6"><input pInputText id="groupId"  [(ngModel)]="At_Group.groupId" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="groupName">groupName</label></div>
+            <div class="ui-grid-col-6"><input pInputText id="groupName" [(ngModel)]="At_Group.groupName"/></div>
+        </div>
+	</div>
+	  <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="AtGroupCancel()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="AtGroupDelete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="AtGroupSave()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Role  Detail" [(visible)]="RoleDialog" showEffect="fade"  [closable]="false">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="At_Role">
+
+        <div class="ui-g" style="width:250px;margin-bottom:10px">
+            <div class="ui-grid-col-4"><label for="isDefault">isDefault</label></div>
+            <div class="ui-g-12"><p-radioButton name="group1" value="Y" label="Yes" [(ngModel)]="At_Role.isDefault"></p-radioButton>
+            <p-radioButton name="group1" value="N" label="No" [(ngModel)]="At_Role.isDefault"></p-radioButton></div>
+        </div>
+
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="roleId">roleId</label></div>
+            <div class="ui-grid-col-6"><input pInputText id="roleId" [(ngModel)]="At_Role.roleId"/></div>
+        </div>
+         <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="roleName">roleName</label></div>
+            <div class="ui-grid-col-6"><input pInputText id="roleName" [(ngModel)]="At_Role.roleName"/></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="groupName">groupName</label></div>
+            <div class="ui-grid-col-6"><input pInputText id="groupName" [(ngModel)]="At_Role.groupName"/></div>
+        </div>
+	</div>
+	  <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="AtRoleCancel()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="AtRoleDelete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="AtRoleSave()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
