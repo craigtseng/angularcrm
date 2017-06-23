@@ -1,0 +1,88 @@
+﻿<p-dataTable #p [value]="cars" [responsive]="true" selectionMode="single" [(selection)]="selectedCar"  (onRowSelect)="onRowSelect($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+     <p-header>
+        <div style="text-align:left">
+            <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+        </div>
+    </p-header>
+	
+	<p-column [style]="{'width':'40px'}" selectionMode="single"></p-column>
+	
+	<p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+	
+    <p-footer>
+		  <div class="ui-helper-clearfix">
+			<button type="button" pButton icon="fa-plus"  (click)="Add()" label="Add" style="width:10% ;display:inline;float:left"></button>
+		    <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+		 </div>
+	</p-footer>
+	
+</p-dataTable>
+
+
+<div *ngIf="detailShow">
+<p-dialog header="Details" [(visible)]="DetailDialog" [responsive]="true" showEffect="fade" [modal]="true"  [closable]="false" >
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="id">id</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id" [(ngModel)]="car.id" /></div>
+        </div>
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="name">name</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="car.name"/></div>
+        </div>
+        
+
+        <p-tabView>
+            <p-tabPanel header="GroupSet Detail">
+            <p-dataTable #p [value]="carss" [responsive]="true" selectionMode="single" [(selection)]="selectedCar1"  (onRowSelect)="onRowSelect1($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+                    <p-header>
+                        <div style="text-align:left">
+                            <p-multiSelect [options]="columnOptions1" [(ngModel)]="cols1"></p-multiSelect>
+                        </div>
+                    </p-header>
+                        <p-column *ngFor="let col of cols1" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+                    <p-footer>
+                        <div class="ui-helper-clearfix">
+						    <button type="button" pButton icon="fa-plus"  (click)="Add1()" label="Add" style="width:10% ;display:inline;float:left"></button>
+						    <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					    </div>
+                    </p-footer>
+                </p-dataTable>
+            </p-tabPanel>
+            
+        </p-tabView>
+
+
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="Cancel()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="Delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="Save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+</div>
+
+<p-dialog header="Sub Detail" [(visible)]="SubDetailDialog" [responsive]="true"  [modal]="true"showEffect="fade"  [closable]="false">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car1">
+
+     <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="subid">subid</label></div>
+            <div class="ui-grid-col-4">
+                <select  name="subid" [(ngModel)]="car1.subid" #subid="ngModel" required>
+			        <option value=""></option>
+			        <option *ngFor="let sub of subCars" >{{sub.id}}</option>
+	        	</select>
+            </div>
+     </div>
+
+	</div>
+	  <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="Cancel1()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="Delete1()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="Save1()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>

@@ -1,0 +1,155 @@
+
+
+.home {
+	background-color:white;
+	  margin: 0 0 10px 10px;
+}
+
+.crmcontent{
+	margin: 0 0 20px 20px ;
+}
+
+.container-fluid{
+	 background-color:#800000 ;
+	 	border-radius:0px;
+}
+
+/*tab---------------------------------*/
+.navbar-nav {
+	border-radius:0px;
+}
+
+.navbar-nav  li:hover{
+  background-color: #007700;
+  border-radius:10px;
+  margin-top: 0px;
+ }
+ 
+.navbar-nav li:focus{
+   color: #007700;
+	background-color: #007700;
+	border-radius:10px;
+}
+
+  .navbar-nav {
+  background-color:#eee;
+ }
+ 
+ .navbar-nav  span:hover{
+  color : red;
+}
+
+ .navbar-nav  li.selected a{
+  background-color: #007700; 
+  border-radius:10px;
+  color : white;
+}
+
+ .navbar-default  {
+	 border-radius:10px;
+ }
+ 
+ .navbar-nav a{
+	 color:#999;
+	 text-decoration:none;
+ }
+  .navbar-nav a:hover{
+	 color:white;
+ }
+ 
+ 
+
+
+/*slider------------------------------------------------*/
+.closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 26px;
+    margin-left: 50px;
+}
+.sidenav {
+  
+	height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #; /* Black*/
+    overflow-y: scroll; /* Disable horizontal scroll */
+	 padding-top: 30px; /* Place content 60px from the top */
+    transition: 0.8s; /* 0.5 second transition effect to slide in the sidenav */
+	float:right;
+}
+
+.home{
+	transition: 0.8s;
+	
+}
+
+.sidenav a {
+    padding: 0px 0px 0px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #007700;
+    display: block;
+}
+.xxx a{
+	font-size:50px;
+	line-height:50px;
+	color:ffffff;
+}
+.xxx a:hover{
+	color:red;
+}
+
+.sidenav li {
+    padding: 0px 0px 0px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #007700;
+    display: block;
+	line-height:50px;
+}
+.list a:hover, .list a:focus{
+   color: white;
+	background-color: #007700;
+	border-radius:10px;
+}
+ .sidenav a.selected{
+  background-color: #007700;
+  border-radius:10px;
+  color:white;
+}
+
+/*tab(top)----------------*/
+.tabtop a{
+	text-decoration:none;
+	color:#007700;
+}
+
+.tabtop {
+	text-align:left;
+	font-size:20px;
+	background-color:#ddd;
+}
+
+.containero{ width:100%; border:0px ; padding:5px; overflow:hidden;background:#998050}
+.lefto{float:left; width:50% ;color:white; text-align:left}
+.righto{ float:right; width:50%;  color:white; text-align:right; vertical-align:bottom;}
+
+.containero .lefto a {
+	text-align:left;
+	color:green;
+	font-size:40px;color:green;
+		text-decoration:none;
+}
+.containero .righto a {
+	text-align:left;
+	color :#007700;
+	font-size:20px;
+	text-decoration:none;
+}
+
+/*accordion --------------------------------------*/

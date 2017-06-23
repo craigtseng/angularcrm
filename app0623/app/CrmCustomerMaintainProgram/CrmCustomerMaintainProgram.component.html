@@ -1,0 +1,295 @@
+﻿<p-dataTable #p [value]="cars" [responsive]="true"   selectionMode="single" [(selection)]="selectedCar"  (onRowSelect)="onRowSelect($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]">
+     <p-header>
+        <div style="text-align:left">
+            <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+        </div>
+    </p-header>
+	
+	<p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" [style]="{'width':'200px'}"></p-column>
+	
+    <p-footer>
+		<div class="ui-helper-clearfix" style="width:100%">
+			<button type="button" pButton icon="fa-plus" style="float:left" (click)="Add()" label="Add"></button>
+			<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="float:left" ></button>
+		</div>
+	</p-footer>
+	
+</p-dataTable>
+
+
+
+
+
+<!--------------Add Dialog Menu--------->
+<p-dialog header="CrmCustomerMaintainProgram Details" [(visible)]="DetailDialog" [responsive]="true" showEffect="fade" [modal]="true" [style]="{'overflow':'scroll'}" height=800 with=600 [closable]="false">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+        <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="id">id</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="id" [(ngModel)]="car.id" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="name">name</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="car.name" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="busCategory">busCategory</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="busCategory" [(ngModel)]="car.busCategory" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="occupier">occupier</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="occupier" [(ngModel)]="car.occupier" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="tel">tel</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="tel" [(ngModel)]="car.tel" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="fax">fax</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="fax" [(ngModel)]="car.fax" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="kind">kind</label></div>
+            <div class="ui-grid-col-8">
+			
+			<select  id="kind" [(ngModel)]="car.kind" >
+					<option *ngFor = "let kind of kind" [value]="kind.id">{{kind.text}}</option>
+			</select>
+		</div>
+		
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for=" class"> class</label></div>
+            <div class="ui-grid-col-8"><input pInputText id=" class" [(ngModel)]="car. class" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="payway">payway</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="payway" [(ngModel)]="car.payway" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="labors">labors</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="labors" [(ngModel)]="car.labors" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="factArea">factArea</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="factArea" [(ngModel)]="car.factArea" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="capital">capital</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="capital" [(ngModel)]="car.capital" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="revenue">revenue</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="revenue" [(ngModel)]="car.revenue" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="mainProduct">mainProduct</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="mainProduct" [(ngModel)]="car.mainProduct" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="productionUsed">productionUsed</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="productionUsed" [(ngModel)]="car.productionUsed" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="agency">agency</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="agency" [(ngModel)]="car.agency" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="isParent">isParent</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="isParent" [(ngModel)]="car.isParent" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="parent">parent</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="parent" [(ngModel)]="car.parent" /></div>
+        </div>
+	<div *ngIf="!newCar">
+		 <p-tabView>
+            <p-tabPanel header="CrmCustomerAddress">
+           <p-dataTable #p [value]="carss1" [responsive]="true" selectionMode="single" [(selection)]="selectedCar1"  (onRowSelect)="onRowSelect1($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+                    <p-header>
+                        <div style="text-align:left">
+                            <p-multiSelect [options]="columnOptions1" [(ngModel)]="cols1"></p-multiSelect>
+                        </div>
+                    </p-header>
+                      
+                        <p-column *ngFor="let col of cols1" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+                    <p-footer>
+                        <div class="ui-helper-clearfix">
+						    <button type="button" pButton icon="fa-plus"  (click)="Add1()" label="Add" style="width:10% ;display:inline;float:left"></button>
+						    <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					    </div>
+                    </p-footer>
+                </p-dataTable>
+            </p-tabPanel>
+			
+		<p-tabPanel header="CrmCustomerPerson">
+           <p-dataTable #p [value]="carss2" [responsive]="true" selectionMode="single" [(selection)]="selectedCar2"  (onRowSelect)="onRowSelect2($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+                    <p-header>
+                        <div style="text-align:left">
+                            <p-multiSelect [options]="columnOptions2" [(ngModel)]="cols2"></p-multiSelect>
+                        </div>
+                    </p-header>
+                      
+                        <p-column *ngFor="let col of cols2" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+                    <p-footer>
+                        <div class="ui-helper-clearfix">
+						    <button type="button" pButton icon="fa-plus"  (click)="Add2()" label="Add" style="width:10% ;display:inline;float:left"></button>
+						    <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					    </div>
+                    </p-footer>
+                </p-dataTable>
+            </p-tabPanel>
+			
+		<p-tabPanel header="CrmCustomerSpecs">
+           <p-dataTable #p [value]="carss3" [responsive]="true" selectionMode="single" [(selection)]="selectedCar3"  (onRowSelect)="onRowSelect3($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+                    <p-header>
+                        <div style="text-align:left">
+                            <p-multiSelect [options]="columnOptions3" [(ngModel)]="cols3"></p-multiSelect>
+                        </div>
+                    </p-header>
+                      
+                        <p-column *ngFor="let col of cols3" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+                    <p-footer>
+                        <div class="ui-helper-clearfix">
+						    <button type="button" pButton icon="fa-plus"  (click)="Add3()" label="Add" style="width:10% ;display:inline;float:left"></button>
+						    <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					    </div>
+                    </p-footer>
+                </p-dataTable>
+            </p-tabPanel>
+			
+    </p-tabView>
+</div>
+		
+    </div>
+    <p-footer>
+         <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="Cancel()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="Delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="Save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Address Detail" [(visible)]="AddressDialog" [responsive]="true"  [modal]="true" showEffect="fade"  [closable]="false">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car1">
+	
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="address1">address1</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="address1" [(ngModel)]="car1.address1" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="address2">address2</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="address2" [(ngModel)]="car1.address2" /></div>
+    </div>
+	
+	<div class="ui-g" style="width:250px;margin-bottom:10px">
+            <div class="ui-grid-col-4"><label for="isDefault">isDefault</label></div>
+            <div class="ui-grid-col-8"><p-radioButton  value="Y" label="Yes" [(ngModel)]="car1.isDefault"></p-radioButton>
+            <p-radioButton  value="N" label="No" [(ngModel)]="car1.isDefault"></p-radioButton></div>
+    </div>
+	
+	<div class="ui-grid-row">
+		<div class="ui-grid-col-6"><label for="postcodePkId">postcodePkId</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="postcodePkId" [(ngModel)]="car1.postcodePkId" [disabled]="true"/></div>
+	</div>	
+	<div class="ui-dialog-buttonpane ui-helper-clearfix" >
+			<button type="button" pButton icon="fa-calendar" (click)="getPostCode()" ></button>
+	</div>	
+     
+
+	</div>
+	  <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="Cancel1()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="Delete1()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="Save1()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Person Detail" [(visible)]="PersonDialog" [responsive]="true"  [modal]="true" showEffect="fade"  [closable]="false">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car2">
+	
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="department">department</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="department" [(ngModel)]="car2.department" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="person">person</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="person" [(ngModel)]="car2.person" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="title">title</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="title" [(ngModel)]="car2.title" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="tel">tel</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="tel" [(ngModel)]="car2.tel" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="fax">fax</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="fax" [(ngModel)]="car2.fax" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="extension">extension</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="extension" [(ngModel)]="car2.extension" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="cellphone">cellphone</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="cellphone" [(ngModel)]="car2.cellphone" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="email">email</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="email" [(ngModel)]="car2.email" /></div>
+    </div>
+
+	</div>
+	  <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="Cancel2()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="Delete2()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="Save2()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Specs Detail" [(visible)]="SpecsDialog" [responsive]="true"  [modal]="true" showEffect="fade"  [closable]="false">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car3">
+	
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="productsId">productsId</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="productsId" [(ngModel)]="car3.productsId" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="qty">qty</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="qty" [(ngModel)]="car3.qty" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="rivalAlias">rivalAlias</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="rivalAlias" [(ngModel)]="car3.rivalAlias" /></div>
+    </div>
+	
+
+	</div>
+	  <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="Cancel3()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="Delete3()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="Save3()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+
+<p-dialog header="Postcode Detail" [(visible)]="PostCodeDialog" [responsive]="true"  [modal]="true" showEffect="fade"  >
+<p-dataTable #p [value]="postCode" [responsive]="true" selectionMode="single" [(selection)]="selectedPostCode"  (onRowSelect)="SelectedPostCode($event)"  scrollable="true" scrollHeight="281px" >
+                      
+               <p-column *ngFor="let col of colsPostCode" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+			   
+                    <p-footer>
+                        <div class="ui-helper-clearfix">
+						    <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					    </div>
+                    </p-footer>
+                </p-dataTable>
+</p-dialog>

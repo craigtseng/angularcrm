@@ -1,0 +1,19 @@
+export interface CrmBusinessMaintenanceHistory { 
+   cust?, 
+   crm_case?,
+   taskDt?,
+   startTime?,
+   endTime?,
+   taskBigType?,
+   taskMediumType?,
+   taskSmallType?,
+   content?,
+   resultType?,
+   result?,
+   custRequest?,
+   lostOrder?,
+   lostOrderResult?,
+   problemsType?,
+   problems?,
+   togetherAgent?
+}

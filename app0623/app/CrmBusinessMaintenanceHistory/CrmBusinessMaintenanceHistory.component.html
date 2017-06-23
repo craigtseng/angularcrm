@@ -1,0 +1,105 @@
+﻿<p-dataTable #p [value]="cars" [responsive]="true" selectionMode="single" [(selection)]="selectedCar"  (onRowSelect)="onRowSelect($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+     <p-header>
+        <div style="text-align:left">
+            <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+        </div>
+    </p-header>
+	
+	<p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" [style]="{'width':'200px'}"></p-column>
+	
+    <p-footer>
+		<div class="ui-helper-clearfix" style="width:100%">
+			<button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Add"></button>
+			<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="float:left"></button>
+		</div>
+	</p-footer>
+	
+</p-dataTable>
+
+
+
+
+
+<!--------------Add Dialog Menu--------->
+<p-dialog #add header="CrmBusinessMaintenanceHistory Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" height="800" [style]="{'overflow':'scroll'}" [closable]="false">
+   
+		<p-header>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-minus" (click)="cancel()" label="Cancel"></button>
+			<button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+			
+        </div>
+		</p-header>
+	 <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="cust">cust</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="cust" [(ngModel)]="car.cust" /></div>
+        </div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="crm_case">crm_case</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="crm_case" [(ngModel)]="car.crm_case" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="taskDt">taskDt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="taskDt" [(ngModel)]="car.taskDt" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="startTime">startTime</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="startTime" [(ngModel)]="car.startTime" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="endTime">endTime</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="endTime" [(ngModel)]="car.endTime" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="taskBigType">taskBigType</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="taskBigType" [(ngModel)]="car.taskBigType" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="taskMediumType">taskMediumType</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="taskMediumType" [(ngModel)]="car.taskMediumType" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="taskSmallType">taskSmallType</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="taskSmallType" [(ngModel)]="car.taskSmallType" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="content">content</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="content" [(ngModel)]="car.content" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="resultType">resultType</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="resultType" [(ngModel)]="car.resultType" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="result">result</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="result" [(ngModel)]="car.result" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="custRequest">custRequest</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="custRequest" [(ngModel)]="car.custRequest" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="lostOrder">lostOrder</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="lostOrder" [(ngModel)]="car.lostOrder" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="lostOrderResult">lostOrderResult</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="lostOrderResult" [(ngModel)]="car.lostOrderResult" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="problemsType">problemsType</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="problemsType" [(ngModel)]="car.problemsType" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="problems">problems</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="problems" [(ngModel)]="car.problems" /></div>
+		</div>
+		<div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="togetherAgent">togetherAgent</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="togetherAgent" [(ngModel)]="car.togetherAgent" /></div>
+		</div>
+    </div>
+</p-dialog>
+   

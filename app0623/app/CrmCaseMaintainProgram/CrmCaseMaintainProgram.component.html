@@ -1,0 +1,224 @@
+﻿<p-dataTable #p [value]="cars" [responsive]="true" selectionMode="single" [(selection)]="selectedCar"  (onRowSelect)="onRowSelect($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+     <p-header>
+        <div style="text-align:left">
+            <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+        </div>
+    </p-header>
+	
+	<p-column *ngFor="let col of cols" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" [style]="{'width':'200px'}"></p-column>
+	
+    <p-footer>
+		<div class="ui-helper-clearfix" style="width:100%">
+			<button type="button" pButton icon="fa-plus" style="float:left" (click)="add()" label="Add"></button>
+			<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="float:left"></button>
+		</div>
+	</p-footer>
+	
+</p-dataTable>
+
+
+
+
+
+<!--------------add Dialog Menu--------->
+<p-dialog header="CrmCaseMaintainProgram Details" [(visible)]="DetailDialog" [responsive]="true" showEffect="fade" [modal]="true" height="800" [style]="{'overflow':'scroll'}">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car">
+    
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="name">name</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="name" [(ngModel)]="car.name" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="startDt">startDt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="startDt" [(ngModel)]="car.startDt" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="occupier">occupier</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="occupier" [(ngModel)]="car.occupier" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="cust">cust</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="cust" [(ngModel)]="car.cust" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="rank">rank</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="rank" [(ngModel)]="car.rank" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="comingReason">comingReason</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="comingReason" [(ngModel)]="car.comingReason" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="comingContent">comingContent</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="comingContent" [(ngModel)]="car.comingContent" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="failReason">failReason</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="failReason" [(ngModel)]="car.failReason" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="diffRate">diffRate</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="diffRate" [(ngModel)]="car.diffRate" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="fallContent">fallContent</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="fallContent" [(ngModel)]="car.fallContent" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="machineName">machineName</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="machineName" [(ngModel)]="car.machineName" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="workingPart">workingPart</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="workingPart" [(ngModel)]="car.workingPart" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="totalAmount">totalAmount</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="totalAmount" [(ngModel)]="car.totalAmount" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="custQueryDt">custQueryDt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="custQueryDt" [(ngModel)]="car.custQueryDt" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="startTestDt">startTestDt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="startTestDt" [(ngModel)]="car.startTestDt" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="endTestDt">endTestDt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="endTestDt" [(ngModel)]="car.endTestDt" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="productionDt">productionDt</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="productionDt" [(ngModel)]="car.productionDt" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="currentProgress">currentProgress</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="currentProgress" [(ngModel)]="car.currentProgress" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="question">question</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="question" [(ngModel)]="car.question" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="support">support</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="support" [(ngModel)]="car.support" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="solution">solution</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="solution" [(ngModel)]="car.solution" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="saveOccupier">saveOccupier</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="saveOccupier" [(ngModel)]="car.saveOccupier" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="savedDay">savedDay</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="savedDay" [(ngModel)]="car.savedDay" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="shiftOversea">shiftOversea</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="shiftOversea" [(ngModel)]="car.shiftOversea" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="overseaArea">overseaArea</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="overseaArea" [(ngModel)]="car.overseaArea" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="shiftPerrcent">shiftPerrcent</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="shiftPerrcent" [(ngModel)]="car.shiftPerrcent" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="contribution">contribution</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="contribution" [(ngModel)]="car.contribution" /></div>
+        </div>
+		 <div class="ui-grid-row">
+            <div class="ui-grid-col-6"><label for="memo">memo</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="memo" [(ngModel)]="car.memo" /></div>
+        </div>
+		 
+	<p-tabView >
+		<p-tabPanel header="CaseSpecs">
+			<p-dataTable #p [value]="carss1" [responsive]="true" selectionMode="single" [(selection)]="selectedCar1"  (onRowSelect)="onRowSelect1($event)"  scrollable="true" scrollHeight="281px" [paginator]="true" [rows]="10"[headerCheckboxToggleAllPages]="true" [rowsPerPageOptions]="[10,20,30,40,50]"  >
+				<p-header>
+					<div style="text-align:left">
+						<p-multiSelect [options]="columnOptions1" [(ngModel)]="cols1"></p-multiSelect>
+					</div>
+				</p-header>
+					<p-column *ngFor="let col of cols1" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+				<p-footer>
+				
+				   <div class="ui-helper-clearfix" >
+						<button type="button" pButton icon="fa-plus"  (click)="add1()" label="Add" style="width:10% ;display:inline;float:left"></button>
+						<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					</div>
+				</p-footer>
+			</p-dataTable>
+		</p-tabPanel>
+	</p-tabView >	
+	
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+			<button type="button" pButton icon="fa-close" (click)="cancel()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="delete()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="save()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Specs Detail" [(visible)]="SpecsDialog" [responsive]="true"  [modal]="true" showEffect="fade"  [closable]="false">
+    <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="car1">
+	
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="spec">spec</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="spec" [(ngModel)]="car1.spec" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="gwSeries">gwSeries</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="gwSeries" [(ngModel)]="car1.gwSeries" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="itemNo">itemNo</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="itemNo" [(ngModel)]="car1.itemNo" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="productsId">productsId</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="productsId" [(ngModel)]="car1.productsId" [disabled]="true"/></div>
+    </div>
+	<div class="ui-dialog-buttonpane ui-helper-clearfix" >
+			<button type="button" pButton icon="fa-calendar" (click)="getGwSeries()" ></button>
+	</div>	
+	
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="qty">qty</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="qty" [(ngModel)]="car1.qty" /></div>
+    </div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-6"><label for="price">price</label></div>
+        <div class="ui-grid-col-8"><input pInputText id="price" [(ngModel)]="car1.price" /></div>
+    </div>	
+
+
+	</div>
+	  <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="cancel1()" label="Cancel"></button>
+            <button type="button" pButton icon="fa-close" (click)="delete1()" label="Delete"></button>
+            <button type="button" pButton icon="fa-check" (click)="save1()" label="Save"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="GwSeries Detail" [(visible)]="GwSeriesDialog" [responsive]="true"  [modal]="true" showEffect="fade"  >
+<p-dataTable #p [value]="gwSeries" [responsive]="true" selectionMode="single" [(selection)]="selectedGwSeries"  (onRowSelect)="SelectedGwSeries($event)"  scrollable="true" scrollHeight="281px" >
+                      
+               <p-column *ngFor="let col of colsGwSeries" [field]="col.field" [header]="col.header" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>
+			   
+                    <p-footer>
+                        <div class="ui-helper-clearfix">
+						    <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="p.exportCSV()" style="width:10% ;display:inline;float:left"></button>
+					    </div>
+                    </p-footer>
+                </p-dataTable>
+</p-dialog>

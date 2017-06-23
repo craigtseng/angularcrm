@@ -1,0 +1,44 @@
+﻿<div id="main" class="home" >
+	<div class="containero">
+			<div class="lefto"><span class="hiwin"><a >HIWIN</a></span></div>
+			<div class="righto"><a>語言:</a>  
+						<a>{{lan}}</a>  
+						<a>區域:</a>
+						<a>{{area}}</a>
+						<br>
+						<a>登入者身分：{{currentUser.ide}}</a>
+						
+			</div>
+		</div>
+		
+	<nav class="nav navbar-default">
+		<p-tieredMenu #menu [model]="itemstemp" [popup]="true" ></p-tieredMenu>
+		
+		<button #btn type="button" class="tabtop" pButton icon="fa fa-list"  (click)="menu.toggle($event)" ></button>
+
+		<span class="logout"><a (click)="logOut()" ><span class="glyphicon glyphicon-log-out "></span>Log out</a></span>	
+		
+		<a  class="btn btn-link" (click)="removeAllTab()" >移除所有標籤</a> 
+		
+							
+							<select *ngIf="temp" name="role"  [(ngModel)]="temp.value"(change)="onChange($event)" >
+								<option *ngFor="let role of temp" [value]="role.value" >  
+										{{role.value}}
+								</option>
+							</select>
+						
+        <div>
+            <ul class="nav navbar-nav" >
+              <li *ngFor="let tab of taz" [class.selected]="taz.indexOf(tab) === selected" (click)="showContent(tab)"><a>{{ tab.label }}<span class="delete" (click)="removeTab(tab)"> X</span></a></li>
+            </ul>
+		</div>
+    </nav> 
+
+		<div class="crmcontent">
+			<router-outlet ></router-outlet>
+			<crmcaselevel></crmcaselevel>
+		</div>
+ 
+	
+</div>
+

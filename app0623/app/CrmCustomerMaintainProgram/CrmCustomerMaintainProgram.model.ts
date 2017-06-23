@@ -1,0 +1,20 @@
+export interface CrmCustomerMaintainProgram {
+   id?, 
+   name?, 
+   busCategory?,
+   occupier?,
+   tel?,
+   fax?,
+   kind?,
+   class?,
+   payway?,
+   labors?,
+   factArea?,
+   capital?,
+   revenue?,
+   mainProduct?,
+   productionUsed?,
+   agency?,
+   isParent?,
+   parent?  
+}

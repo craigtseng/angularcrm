@@ -1,0 +1,16 @@
+export interface CrmExhibitionMaintain {
+		custName?,
+		exYear?,
+		exhibition?,
+		occupier?,
+		postcode?,
+		city?,
+		address?,
+		memo?,
+		busCategory?,
+		workStatus?,
+		CustKind?,
+		misCustId?,
+		modifier?,
+		modifierTime?,
+}
