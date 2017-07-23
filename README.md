@@ -26,3 +26,6 @@ https://medium.com/@guru.sophie/%E5%BC%95%E7%99%BC%E9%A9%9A%E4%BA%BA%E7%9A%84%E7
 
 
 https://thinkster.io/tutorials/angular-2-http
+
+
+https://angular.zeef.com/%E9%99%B3%E5%A5%95%E5%AE%89?ref=%E9%99%B3%E5%A5%95%E5%AE%89&share=9b6369e71ce245eb9bc1919473154297
