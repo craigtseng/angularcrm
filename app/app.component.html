@@ -1,8 +1,27 @@
-<app-header (featureSelected)="onNavigate($event)"></app-header>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+<!--The whole content below can be removed with the new code.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!!
+  </h1>
 </div>
+
+ <h1>{{title}}</h1>
+    <h2>My Heroes</h2>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes"
+        [class.selected]="hero === selectedHero"
+        (click)="onSelect(hero)">
+          {{hero.id}}
+         {{hero.name}}
+        
+      </li>
+    </ul>
+<h1>check out</h1>
+ <li *ngFor="let user of users">
+   {{user}}
+  <div *ngFor="let temp of user.users">
+      {{temp.id}}
+      {{temp.name}}
+  </div>
+ </li>
+ 
