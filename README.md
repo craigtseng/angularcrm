@@ -17,12 +17,15 @@ npm cache clean
 ```bash
 npm install -g @angular/cli@latest
 ```
+## 可解決ng build --prod (module not found 問題)
+```bash
+npm install enhanced-resolve@3.3.0
+```
 
 var date = new Date(now.getTime() - 7 * 24 * 3600 * 1000);
 
 https://zhidao.baidu.com/question/269103569.html?qbl=relate_question_1
 
-https://www.primefaces.org/primeng/#/datatable/crud
 
 https://www.youtube.com/watch?v=cUWcZ4FzgmI
 
