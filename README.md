@@ -23,7 +23,8 @@ npm install enhanced-resolve@3.3.0
 ```
 ## 取時間
 var date = new Date(now.getTime() - 7 * 24 * 3600 * 1000);
-https://zhidao.baidu.com/question/269103569.html?qbl=relate_question_1
+[時間](https://zhidao.baidu.com/question/269103569.html?qbl=relate_question_1 "time")
+
 
 ## angular 資源
 https://angular.zeef.com/%E9%99%B3%E5%A5%95%E5%AE%89?ref=%E9%99%B3%E5%A5%95%E5%AE%89&share=9b6369e71ce245eb9bc1919473154297
