@@ -30,3 +30,6 @@ var date = new Date(now.getTime() - 7 * 24 * 3600 * 1000);
 https://angular.zeef.com/%E9%99%B3%E5%A5%95%E5%AE%89?ref=%E9%99%B3%E5%A5%95%E5%AE%89&share=9b6369e71ce245eb9bc1919473154297
 
 [PWA推波通知](https://jonny-huang.github.io/angular/training/21_pwa3/ "推波通知")
+
+https://github.com/primefaces/primeng/issues/4473
+https://www.primefaces.org/primeng/#/menumodel
